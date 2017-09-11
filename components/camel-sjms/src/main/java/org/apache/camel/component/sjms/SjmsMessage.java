@@ -265,12 +265,12 @@ public class SjmsMessage extends DefaultMessage {
     }
 
     private String getDestinationAsString(Destination destination) throws JMSException {
-        String result;
+        String result = null;
         if (destination == null) {
             result = "null destination!" + File.separator;
         } else if (destination instanceof Topic) {
             result = "topic" + File.separator + ((Topic) destination).getTopicName() + File.separator;
-        } else {
+        } else if (destination instanceof Queue) {
             result = "queue" + File.separator + ((Queue) destination).getQueueName() + File.separator;
         }
         return result;
